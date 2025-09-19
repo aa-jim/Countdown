@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Orbitron", monospace;
+  background: linear-gradient(135deg, #e5203a 0%, #ffdbe8 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    #e5203a 0%,
+    #f24455 25%,
+    #ff94b2 75%,
+    #ffdbe8 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.title {
+  color: white;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.setup-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.datetime-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.date-box {
+  transition: all 0.3s ease;
+}
+.time-box {
+  transition: all 0.3s ease;
+}
+
+.date-box:hover,.time-box:hover {
+  transform: translateY(-3px);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-group label {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+/* Shared base style */
+.input-group input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 0.8rem;
+  color: white;
+  font-family: "Orbitron", monospace;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Date input style */
+.date-input {
+  width: 200px;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, .1);
+}
+
+/* Time input style */
+.time-input {
+  width: 160px;
+}
+
+.time-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.start-btn {
+  background: linear-gradient(45deg, rgb(16, 177, 16));
+  border: none;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  color: white;
+  font-family: "Orbitron", monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-left: 1rem;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.stop-btn {
+  background: linear-gradient(45deg, red);
+  border: none;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  color: white;
+  font-family: "Orbitron", monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-left: 1rem;
+}
+
+.stop-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.time-unit {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.time-unit:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.time-value {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.5rem;
+  font-family: "Orbitron", monospace;
+}
+
+.time-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.floating-icons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* so it doesn’t block clicks */
+    overflow: hidden;
+    z-index: 0; /* behind main content */
+}
+
+.floating-icons .icon {
+    position: absolute;
+    font-size: 4rem;
+    color: white;
+    opacity: 0.8;
+    animation: floatAnim linear infinite;
+}
+
+/* Animation keyframes */
+@keyframes floatAnim {
+    0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(50px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.status-message {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 15px;
+  font-size: 2rem;
+  font-weight: 700;
+  display: none;
+}
+
+.status-message.finished {
+  background: linear-gradient(45deg, #7958fb);
+  background-size:contain;
+  color: white;
+  display: block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .datetime-input {
+    flex-direction: column;
+  }
+
+  .input-group input {
+    width: 200px;
+  }
+
+  .time-value {
+    font-size: 2.5rem;
+  }
+
+  .countdown-display {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+}
